@@ -1,0 +1,51 @@
+<script type="text/javascript">
+	   function Search_string() {
+	      if(document.getElementById("n").checked){
+		      var CheckSen = document.getElementById("area").value;
+		      var key =  document.getElementById("find").value;
+		      var searchkey = new RegExp(key,'gi');
+		      var matches = CheckSen.match(searchkey);
+
+		      if (matches == null) {
+		        document.getElementById("Result").innerHTML = "No results";
+		        return;
+		      }
+	      		else {
+	       		 document.getElementById("Result").innerHTML = matches.length;
+	      		}
+   		 }
+
+   		 if(document.getElementById("y").checked){
+		      var CheckSen = document.getElementById("area").value;
+		      var key =  document.getElementById("find").value
+		      var searchkey = new RegExp(key,"g");
+		      var matches = CheckSen.match(searchkey);
+		      if (matches == null) {
+		        document.getElementById("Result").innerHTML = "No results";
+		        return;
+		      }
+		      else {
+		        document.getElementById("Result").innerHTML = matches.length;
+		      }//end else
+		 } //end if
+  }//end function
+	
+</script>
+<!DOCTYPE html>
+<html>
+<body>
+
+	<center>
+
+		Text Input : <textarea id="area"></textarea><br><br>
+
+		Sensitive Case :<input type="radio" name="case" id="y">Yes 
+						<input type="radio" name="case" id="n">No<br><br>
+		Search : <input id="find" type="Text" name="f"><br><br>
+		<button onclick="Search_string()">Search</button><br><br>
+		Search For Result : <p id="Result"></p>
+	</center>
+
+</body>
+</html>
+

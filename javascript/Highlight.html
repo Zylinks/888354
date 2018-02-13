@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<center>
+		<h2>Ex2 HighLight Text</h2>
+	</center>
+</head>
+<body>
+	<div>
+		<center>
+			Search: <input id="find" type="text" name="key"><br><br>
+			<button onclick="Highlight_string()">Search</button><br><br>
+			Found: <p id="Result" style="display: inline;"></p>
+		</center>
+	</div>
+	<div>
+			<p id="head">The Article : Continuous Digital Health
+				<p id="Article">
+					The way we deal with our health is undergoing a major transformation, not only because mobile Internet technology has made it possible to have continuous access to personal health information, but also because breaking the trend of ever-growing healthcare costs is increasingly necessary. Estimates indicate that more than 70 percent of the world population will have a smartphone by 2017. Connectivity, interoperability, sensing, and instant feedback through smartphones all provide new opportunities for gaining insights into our health behavior. Such insights are improving, and understanding what motivates people to make healthy changes throughout their lifetimes is becoming more important. Internet technology not only lets us continuously monitor an individual's physiological and psychological state, but also allows for building up a lifelong record of physical, mental, and social health.
+				</p>
+			</p>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.0/jquery.mark.es6.min.js"></script>
+<script>
+	function Highlight_string(){
+		var CheckSen = $("#Article").html();
+		var key =  $("#find").val();
+		var searchkey = new RegExp(key,'gi');
+		var matches = CheckSen.match(searchkey);
+		if (matches == null) {
+		     $("#Result").html("No results");
+		     return;
+		}
+	    else {
+	    	$("#Result").html(matches.length);
+	    }
+	    //$("#Article").unmark();
+	    $("#Article").mark(matches);
+		//console.log(key);
+		//console.log(find);
+	}
+	$(document).ready(function(){
+    $("input").focus(function(){
+    $("#Article").unmark();
+    });
+});
+
+</script>	
+
+</body>
+</html>
