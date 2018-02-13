@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<center>
+		<h2>Ex2 HighLight Text</h2>
+	</center>
+<body>
+	<div>
+		<center>
+			<button onclick="getNumber()">Random Number</button><br><br>
+			<p id="result1" style="display: inline;"></p>
+			<p id="plus" style="display: inline;"></p>
+			<p id="result2" style="display: inline;"></p>
+			<input id="find" type="text" name="key"><br><br>
+			<button onclick="Answer()">Send Answer</button><br><br>
+			Result: <p id="Result" style="display: inline;"></p>
+		</center>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.0/jquery.mark.es6.min.js"></script>
+<script>
+function getNumber() {
+        var minNumber = 1; // le minimum
+        var maxNumber = 100; // le maximum
+        var randomnumber1 = Math.floor(Math.random() * (maxNumber + 1) + minNumber); // la fonction magique
+        var randomnumber2 = Math.floor(Math.random() * (maxNumber + 1) + minNumber); // la fonction magique
+        $('#result1').html(randomnumber1);
+        $('#result2').html(randomnumber2);
+        $('#plus').html('+');
+        $('#result').html(randomnumber1+randomnumber2);
+       // return false;   
+    } 
+function Answer(){
+	var a = parseInt($("#result1").html()) + parseInt($("#result2").html());
+    if($("#find").val() == a){
+      $("#Result").html("That's correct.");
+      $("#Result").css('color', 'green');
+    }else {
+      $("#Result").html("That's wrong. The answer is : "+a);
+      $("#Result").css('color', 'red');
+    }
+
+}
+</script>
+
+</body>
+</html>
